@@ -25,4 +25,5 @@ Route::group(['namespace' => 'Subscriptions'], function () {
     Route::get('plans', 'PlanController@index')->name('subscriptions.plans');
 
     Route::get('/subscriptions', 'SubscriptionController@index')->name('subscriptions');
+    Route::post('/subscriptions', 'SubscriptionController@store')->name('subscriptions.store');
 });
