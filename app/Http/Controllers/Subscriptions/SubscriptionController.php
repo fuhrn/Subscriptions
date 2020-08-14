@@ -24,7 +24,8 @@ class SubscriptionController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'token' => 'required'
+            'token' => 'required',
+            'plan' => 'required|exists:plans,slug'
         ]);
 
         $plan = Plan::where('slug', $request->plan)

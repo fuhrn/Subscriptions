@@ -27,6 +27,10 @@
                                     Resume Subscription</a>
                             </li>
                         @endcan
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('account.subscriptions.swap') }}">
+                                Swap Plan</a>
+                        </li>
                     @endif
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('account.subscriptions.invoices') }}">

@@ -21,7 +21,7 @@ class SubscriptionInvoiceController extends Controller
     public function show(Request $request, $id)
     {
         return redirect($request->user()->findInvoice($id)->asStripeInvoice()->invoice_pdf);
-        
+
         // invoice through Cashier
 //        return $request->user()->downloadInvoice($id, [
 //            'vendor' => config('app.name'),

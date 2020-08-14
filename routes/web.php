@@ -44,9 +44,15 @@ Route::group(['namespace' => 'Account', 'prefix' => 'account'], function () {
             ->name('account.subscriptions.resume');
         Route::post('/resume', 'SubscriptionResumeController@store');
 
+        Route::get('/swap', 'SubscriptionSwapController@index')
+            ->name('account.subscriptions.swap');
+        Route::post('/swap', 'SubscriptionSwapController@store');
+
         Route::get('/invoices', 'SubscriptionInvoiceController@index')
             ->name('account.subscriptions.invoices');
         Route::get('/invoices/{id}', 'SubscriptionInvoiceController@show')
             ->name('account.subscriptions.invoice');
+
+
     });
 });
