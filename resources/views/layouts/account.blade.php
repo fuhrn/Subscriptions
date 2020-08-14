@@ -28,6 +28,10 @@
                             </li>
                         @endcan
                     @endif
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('account.subscriptions.invoices') }}">
+                            Invoices</a>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-9">
