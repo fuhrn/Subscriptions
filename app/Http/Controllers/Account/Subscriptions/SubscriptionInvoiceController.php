@@ -11,7 +11,7 @@ class SubscriptionInvoiceController extends Controller
     {
         $this->middleware(['auth']);
     }
-    
+
     public function index(Request $request)
     {
         $invoices = $request->user()->invoices();
@@ -20,10 +20,13 @@ class SubscriptionInvoiceController extends Controller
 
     public function show(Request $request, $id)
     {
-        return $request->user()->downloadInvoice($id, [
-            'vendor' => config('app.name'),
-            'product' => 'Membership'
-        ]);
+        return redirect($request->user()->findInvoice($id)->asStripeInvoice()->invoice_pdf);
+        
+        // invoice through Cashier
+//        return $request->user()->downloadInvoice($id, [
+//            'vendor' => config('app.name'),
+//            'product' => 'Membership'
+//        ]);
     }
 
 }
