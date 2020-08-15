@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Subscriptions;
 
 use App\Http\Controllers\Controller;
 use App\Plan;
+use App\Rules\ValidCoupon;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
@@ -24,12 +25,15 @@ class SubscriptionController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'coupon' => 'nullable',
+            'coupon' => [
+                'nullable',
+                new ValidCoupon()
+            ],
             'token' => 'required',
             'plan' => 'required|exists:plans,slug'
         ]);
 
-        $plan = Plan::where('slug', $request->get('plan','monthly'))
+        $plan = Plan::where('slug', $request->get('plan', 'monthly'))
             ->first();
 
         $request->user()->newSubscription('default', $plan->stripe_id)
