@@ -33,7 +33,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('account.subscriptions.card') }}">
-                                Update Plan</a>
+                                Update Card</a>
                         </li>
                     @endif
                     <li class="nav-item">
