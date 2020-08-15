@@ -24,6 +24,7 @@ class SubscriptionController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'coupon' => 'nullable',
             'token' => 'required',
             'plan' => 'required|exists:plans,slug'
         ]);
@@ -32,6 +33,7 @@ class SubscriptionController extends Controller
             ->first();
 
         $request->user()->newSubscription('default', $plan->stripe_id)
+            ->withCoupon($request->coupon)
             ->create($request->token);
 
         return back();
